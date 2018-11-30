@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Route, withRouter, Switch, NavLink, Redirect } from "react-router-dom";
+import { Route, withRouter, Switch, NavLink} from "react-router-dom";
 import LoginPage from "./components/LoginPage.js";
 import RegisterPage from "./components/RegisterPage.js";
 import LandingPage from "./components/LandingPage.js";
@@ -14,8 +14,6 @@ const options = {
   }
 };
 
-
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -28,8 +26,6 @@ class App extends Component {
       }
     };
   }
-
-
 
   inputHandler = ev => {
     this.setState({
@@ -106,11 +102,11 @@ class App extends Component {
     ev.preventDefault();
     localStorage.removeItem("login_token");
     this.setState({ loggedIn: false, jokes: [] });
-    this.props.history.push("/");
   };
 
   render() {
     const loggedIn = this.state.loggedIn
+
     return (
       <div className="App">
         <nav className="navBar">

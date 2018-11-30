@@ -1,6 +1,10 @@
 import React from "react";
+import {Redirect} from 'react-router-dom'
 
-const UserListPage = props => {
+const JokesListPage = props => {
+    if (!localStorage.getItem('login_token')) {
+        return <Redirect to='/'/>
+    }
   return (
     <div>
       {props.loggedIn === true ? <h1>Please see your Joke List Below</h1> : <h1>Please log in to see your Joke List</h1>}
@@ -41,4 +45,4 @@ const UserListPage = props => {
   );
 };
 
-export default UserListPage;
+export default JokesListPage;

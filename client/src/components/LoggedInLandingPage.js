@@ -6,7 +6,7 @@ const LoggedInLandingPage = props => {
         <div>
            <h1>Welcome.</h1>
            <br/>
-           <p>Would you like to register a new user for the database? Click here:   </p><button onClick={ev => {ev.preventDefault(); props.history.push('/sign-up')}}>Register</button>
+            <p>Feel free to navigate to the Joke List page to see your jokes.</p>
         </div>
     )
 }
