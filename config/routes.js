@@ -1,4 +1,7 @@
 const axios = require('axios');
+const bcrypt = require('bcryptjs')
+const db = require('../database/dbConfig')
+const jwt = require('jsonwebtoken')
 
 const { authenticate } = require('./middlewares');
 
@@ -10,6 +13,18 @@ module.exports = server => {
 
 function register(req, res) {
   // implement user registration
+  const creds = req.body
+  const hash = bcrypt.hashSync(creds.password, 14)
+  creds.password = hash
+
+  db('users')
+  .insert(creds)
+  .then(ids => {
+    res.status(200).json({message: `Success! New user added with id of ${ids}`})
+    console.log('Success')
+  })
+  .catch(err => res.status(500).json(`There was an error: ${err}`))
+
 }
 
 function login(req, res) {
