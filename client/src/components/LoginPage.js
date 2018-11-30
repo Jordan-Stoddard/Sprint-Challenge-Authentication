@@ -3,7 +3,7 @@ import React from 'react'
 
 const LoginPage = props => {
     return (
-        <div>
+        <div className="inputContainer">
             <h1>Login Page</h1>
 
             <form action="onSubmit">

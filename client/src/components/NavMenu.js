@@ -3,7 +3,7 @@ import { Navbar, NavItem } from "react-materialize";
 
 const NavMenu = ({ loggedIn, logOut, history }) => {
   return (
-    <Navbar brand="logo" right>
+    <Navbar brand="" right>
       <NavItem onClick={() => history.push("/")}>Home</NavItem>
       {loggedIn === false ? (
         <NavItem onClick={() => history.push("/sign-in")}>Log In</NavItem>
