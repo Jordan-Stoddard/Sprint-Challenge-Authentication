@@ -1,4 +1,5 @@
 import React from 'react'
+import {Button} from 'react-materialize'
 
 
 const LoginPage = props => {
@@ -23,7 +24,7 @@ const LoginPage = props => {
             value={props.password}
             className="input"
             />
-            <button onClick={props.loginEvent}>Login</button>
+            <Button className="red" wave="light" onClick={props.loginEvent}>Login</Button>
             </form>
         </div>
     )
