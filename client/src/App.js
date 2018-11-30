@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Route, withRouter, Switch, NavLink} from "react-router-dom";
+import { Route, withRouter, Switch} from "react-router-dom";
 import LoginPage from "./components/LoginPage.js";
 import RegisterPage from "./components/RegisterPage.js";
 import LandingPage from "./components/LandingPage.js";
 import JokeListPage from "./components/JokeListPage.js";
+import NavMenu from './components/NavMenu.js'
 import axios from "axios";
+
 
 const token = localStorage.getItem("login_token");
 const options = {
@@ -109,20 +111,11 @@ class App extends Component {
 
     return (
       <div className="App">
-        <nav className="navBar">
-          <NavLink to="/">Home</NavLink>
-          {loggedIn === false ? <NavLink to="/sign-in">Log In</NavLink> : null }
-          {loggedIn === false ? <NavLink to="/sign-up">Register</NavLink> : null }
-          {loggedIn === false ? null : <NavLink to="/jokelist">Jokelist</NavLink>}
-          
-          {loggedIn === false ? (
-            undefined
-          ) : (
-            <button className="logoutButton" onClick={this.logOut}>
-              Logout
-            </button>
-          )}
-        </nav>
+       <NavMenu 
+       loggedIn={this.state.loggedIn}
+       logOut={this.logOut}
+       history={this.props.history}
+       />
 
         <Switch>
           <Route

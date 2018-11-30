@@ -3,9 +3,10 @@
 }
 
 .userListContainer {
-  border: 1px solid black;
   display: flex;
-  width: 40%;
+    width: 40%;
+    margin: 10px auto;
+    flex-direction: column;
 }
 
 .dataColumn {
@@ -46,4 +47,18 @@ a {
   font-size: 91%;
   padding-top: 8px;
   cursor: pointer;
+}
+
+.input {
+  width: 10%;
+}
+
+.jokeBody {
+  display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+p {
+  margin-bottom: 10px;
 }

@@ -1,47 +1,37 @@
 import React from "react";
-import {Redirect} from 'react-router-dom'
+import { Redirect } from "react-router-dom";
+import { Card, CardTitle } from "react-materialize";
+import img from './img/keep-calm-you-are-not-authorized.png'
 
 const JokesListPage = props => {
-    if (!localStorage.getItem('login_token')) {
-        return <Redirect to='/'/>
-    }
+  if (!localStorage.getItem("login_token")) {
+    return <Redirect to="/" />;
+  }
   return (
     <div>
-      {props.loggedIn === true ? <h1>Please see your Joke List Below</h1> : <h1>Please log in to see your Joke List</h1>}
+      <h1>Please see your Joke List Below</h1>
 
-    { props.loggedIn === true ? <div className="userListContainer">
-        <div className="dataColumn">
-          <h2 className="columnHeader">ID</h2>
-          {props.jokes.map(joke => {
-            return <p className="columnCell" key={joke.id}>{joke.id}</p>;
-          })}
-        </div>
-
-        <div className="dataColumn">
-          <h2 className="columnHeader">Joke Type</h2>
-          {props.jokes.map(joke => {
-            return <p className="columnCell" key={joke.id}>{joke.type}</p>;
-          })}
-        </div>
-
-        <div className="dataColumn">
-          <h2 className="columnHeader">Set Up</h2>
-          {props.jokes.map(joke => {
-            return <p className="columnCell" key={joke.id}>{joke.setup}</p>;
-          })}
-        </div>
-
-        <div className="dataColumn">
-          <h2 className="columnHeader">Punch Line</h2>
-          {props.jokes.map(joke => {
-            return <p className="columnCell" key={joke.id}>{joke.punchline}</p>;
-          })}
-        </div>
-
-      </div> : undefined }
-
-
-    </div> 
+      <div className="userListContainer">
+        {props.jokes.map(joke => {
+          return (
+            <Card
+              key={joke.id}
+              className="small"
+              header={
+                <CardTitle image={img}>
+                  Dad Joke #: {joke.id} <br /> Joke Type: {joke.type}
+                </CardTitle>
+              }
+            >
+            <div className="jokeBody">
+              <p><strong>Set up:</strong> {joke.setup} <br /></p>
+              <p><strong>Punchline:</strong> {joke.punchline}</p>
+            </div>
+            </Card>
+          );
+        })}
+      </div>
+    </div>
   );
 };
 

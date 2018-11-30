@@ -13,6 +13,7 @@ const LoginPage = props => {
             name="username"
             onChange={props.inputHandler}
             value={props.username}
+            className="input"
             />
             <input 
             type="password"
@@ -20,6 +21,7 @@ const LoginPage = props => {
             name="password"
             onChange={props.inputHandler}
             value={props.password}
+            className="input"
             />
             <button onClick={props.loginEvent}>Login</button>
             </form>

@@ -12,6 +12,7 @@ const RegisterPage = props => {
             name="username"
             onChange={props.inputHandler}
             value={props.username}
+            className="input"
             />
             <input 
             type="password"
@@ -19,6 +20,7 @@ const RegisterPage = props => {
             name="password"
             onChange={props.inputHandler}
             value={props.password}
+            className="input"
             />
             <button onClick={props.registerEvent}>Register</button>
             </form>
