@@ -23,7 +23,8 @@ function register(req, res) {
   db('users')
   .insert(creds)
   .then(ids => {
-    res.status(200).json({message: `Success! New user added with id of ${ids}`})
+    const token = generateToken(creds.username)
+    res.status(200).json({message: `Success! New user added with id of ${ids}`, token})
     console.log('Success')
   })
   .catch(err => res.status(500).json(`There was an error: ${err}`))

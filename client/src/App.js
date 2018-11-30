@@ -54,7 +54,8 @@ class App extends Component {
         if (res.status === 200 && res.data.token) {
           localStorage.setItem("login_token", res.data.token);
         }
-        axios.get("http://localhost:3300/api/jokes", options).then(res => {
+        axios.get("http://localhost:3300/api/jokes", options)
+        .then(res => {
           this.setState({ jokes: res.data, loggedIn: true });
           this.props.history.push("/jokelist");
           if(this.state.loggedIn === true) {
@@ -71,24 +72,35 @@ class App extends Component {
       this.state.credentials.username === "" ||
       this.state.credentials.password === ""
     ) {
-      return alert("Please enter a username, password and department.");
+      return alert("Please enter a username, password.");
     }
     axios
       .post("http://localhost:3300/api/register", this.state.credentials)
       .then(res => {
+        console.log(res)
+        if (res.data.token) {
+          localStorage.setItem('login_token', res.data.token);
+        } else {
+          console.log('Error: Check whats coming back from the server: ', res.status, res.data)
+        };
         this.setState({
           credentials: {
             username: "",
             password: "",
           }
         })
-        if(res.status === 201) {
+      
+        axios.get("http://localhost:3300/api/jokes", options)
+        .then(res => {
+          this.setState({ jokes: res.data, loggedIn: true });
+        if(this.state.loggedIn === true) {
           alert('New user has been successfully registered.')
         }
-        this.props.history.push('/')
+        this.props.history.push('/jokelist')
       })
       .catch(err => console.log(`There was an error: ${err}`));
-  };
+      });
+    }
 
   logOut = ev => {
     ev.preventDefault();
