@@ -1,0 +1,58 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js install
+
+PATH: 
+  C:\Users\Patent\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Patent\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Program Files\Intel\WiFi\bin;C:\Program Files\Common Files\Intel\WirelessCommon;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin;C:\Program Files\Intel\WiFi\bin;C:\Program Files\Common Files\Intel\WirelessCommon;C:\Users\Patent\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Patent\AppData\Roaming\npm;C:\Users\Patent\AppData\Local\Yarn\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.9.4
+
+Node version: 
+  8.11.4
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, unlink 'C:\Users\Patent\Documents\LambdaSchool\LS-Week13-Authentication\Sprint-Challenge-Authentication\node_modules\sqlite3\lib\binding\node-v57-win32-x64\node_sqlite3.node'
+
+npm manifest: 
+  {
+    "name": "auth-challenge",
+    "version": "1.0.0",
+    "description": "Authentication Sprint Challenge",
+    "main": "index.js",
+    "scripts": {
+      "start": "nodemon index.js"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/LambdaSchool/Sprint-Challenge-Authentication.git"
+    },
+    "keywords": [],
+    "author": "Lambda School",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/LambdaSchool/Sprint-Challenge-Authentication/issues"
+    },
+    "homepage": "https://github.com/LambdaSchool/Sprint-Challenge-Authentication#readme",
+    "dependencies": {
+      "axios": "^0.18.0",
+      "bcryptjs": "^2.4.3",
+      "cors": "^2.8.4",
+      "dotenv": "^6.1.0",
+      "express": "^4.16.4",
+      "jsonwebtoken": "^8.3.0",
+      "knex": "^0.15.2",
+      "sqlite3": "^4.0.2"
+    },
+    "devDependencies": {
+      "nodemon": "^1.18.4"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
