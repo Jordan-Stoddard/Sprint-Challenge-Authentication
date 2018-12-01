@@ -18,7 +18,7 @@ const NavMenu = ({ loggedIn, logOut, history }) => {
       {loggedIn === false ? (
         undefined
       ) : (
-        <NavItem onClick={() => logOut()}>Logout</NavItem>
+        <NavItem onClick={(ev) => logOut(ev)}>Logout</NavItem>
       )}
     </Navbar>
   );

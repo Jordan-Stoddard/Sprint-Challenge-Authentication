@@ -7,14 +7,10 @@ import LandingPage from "./components/LandingPage.js";
 import JokeListPage from "./components/JokeListPage.js";
 import NavMenu from './components/NavMenu.js'
 import axios from "axios";
+axios.defaults.withCredentials = true;
 
 
-const token = localStorage.getItem("login_token");
-const options = {
-  headers: {
-    authorization: token
-  }
-};
+
 
 class App extends Component {
   constructor(props) {
@@ -49,10 +45,7 @@ class App extends Component {
     axios
       .post("http://localhost:3300/api/login", this.state.credentials)
       .then(res => {
-        if (res.status === 200 && res.data.token) {
-          localStorage.setItem("login_token", res.data.token);
-        }
-        axios.get("http://localhost:3300/api/jokes", options)
+        axios.get("http://localhost:3300/api/jokes")
         .then(res => {
           this.setState({ jokes: res.data, loggedIn: true });
           this.props.history.push("/jokelist");
@@ -75,20 +68,13 @@ class App extends Component {
     axios
       .post("http://localhost:3300/api/register", this.state.credentials)
       .then(res => {
-        console.log(res)
-        if (res.data.token) {
-          localStorage.setItem('login_token', res.data.token);
-        } else {
-          console.log('Error: Check whats coming back from the server: ', res.status, res.data)
-        };
         this.setState({
           credentials: {
             username: "",
             password: "",
           }
         })
-      
-        axios.get("http://localhost:3300/api/jokes", options)
+        axios.get("http://localhost:3300/api/jokes")
         .then(res => {
           this.setState({ jokes: res.data, loggedIn: true });
         if(this.state.loggedIn === true) {
@@ -102,8 +88,12 @@ class App extends Component {
 
   logOut = ev => {
     ev.preventDefault();
-    localStorage.removeItem("login_token");
-    this.setState({ loggedIn: false, jokes: [] });
+    axios
+    .get('http://localhost:3300/api/logout')
+    .then( res => {
+      this.setState({ loggedIn: false, jokes: [] });
+      this.props.history.push('/')
+    })
   };
 
   render() {

@@ -13,4 +13,4 @@ The longer and more diverse a password the the longer it will take an attacker t
 
 
 4. What are the three parts of the JSON Web Token?
-payload, secret, options.
+header, payload, signature

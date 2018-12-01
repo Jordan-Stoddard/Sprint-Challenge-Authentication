@@ -4,9 +4,9 @@ import { Card, CardTitle } from "react-materialize";
 import img from './img/keep-calm-you-are-not-authorized.png'
 
 const JokesListPage = props => {
-  if (!localStorage.getItem("login_token")) {
-    return <Redirect to="/" />;
-  }
+  // if (!props.loggedIn) {
+  //   return <Redirect to="/" />;
+  // }
   return (
     <div>
       <h1>Please see your Joke List Below</h1>
